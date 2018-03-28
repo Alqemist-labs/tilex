@@ -13,8 +13,10 @@ use Mix.Config
 # which you typically run after static files are built.
 config :tilex, TilexWeb.Endpoint,
   server: true,
-  url: [host: "0.0.0.0", port: 3000],
-  cache_static_manifest: "priv/static/manifest.json"
+  http: [port: "4000"],
+  url: [host: "til.alqemist.com", scheme: "https", port: "443"],
+  cache_static_manifest: "priv/static/manifest.json",
+  check_origin: ["//*.alqemist.com", "//lvh.me:4000"]
 
 # Do not print debug messages in production
 config :logger, level: :info

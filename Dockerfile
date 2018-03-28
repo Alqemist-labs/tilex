@@ -64,8 +64,6 @@ RUN apk add --no-cache bash netcat-openbsd && rm -rf /var/cache/apk/*
 EXPOSE 4000
 ENV PORT=4000 MIX_ENV=prod REPLACE_OS_VARS=true SHELL=/bin/sh
 
-RUN ls /opt/app/
-
 COPY --from=releaser /opt/app/_build/prod/rel/tilex/releases/$VERSION/tilex.tar.gz ./
 
 COPY ./wait-pg.sh /opt/app/bin/wait-pg.sh
