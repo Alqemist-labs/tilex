@@ -1,6 +1,4 @@
-# Tilex - Today I Learned in Elixir
-
-[![CircleCI](https://circleci.com/gh/hashrocket/tilex.svg?style=svg)](https://circleci.com/gh/hashrocket/tilex)
+# Tilex - Today I Learned in Elixir (Alqemist.com version)
 
 > Today I Learned is an open-source project by the team at
 > [Hashrocket](https://hashrocket.com/) that catalogues the sharing &
@@ -11,9 +9,6 @@
 This site was open-sourced as a window into our development process, as well as
 to allow people to experiment with the site on their own and contribute to the
 project.
-
-We originally implemented Tilex as
-[_hr-til_](https://github.com/hashrocket/hr-til), a Ruby on Rails app.
 
 ### Installation
 
@@ -35,8 +30,7 @@ $ npm install --prefix assets
 $ mix phx.server
 ```
 
-If you'd like to skip the database seeds, run `mix ecto.create && mix
-ecto.migrate` in place of `mix ecto.setup`.
+If you'd like to skip the database seeds, run `mix ecto.create && mix ecto.migrate` in place of `mix ecto.setup`.
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
@@ -94,21 +88,6 @@ Run the tests with:
 $ mix test
 ```
 
-### Deployment
-
-Hashrocket's Tilex is deployed to [Heroku](https://www.heroku.com/). These are
-Hashrocket's deployed instances:
-
-- Staging: https://tilex-staging.herokuapp.com
-- Production: https://til.hashrocket.com
-
-Database migrations require telling Heroku how many pools to use. Here's an
-example:
-
-```
-$ heroku run "POOL_SIZE=2 mix ecto.migrate"
-```
-
 ### Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for more information.
@@ -123,7 +102,7 @@ CONDUCT](CODE_OF_CONDUCT.md) for more information.
 ### Usage
 
 We love seeing forks of Today I Learned in production! Please consult
-[USAGE](USAGE.md) for guidelines on appropriate styling and attribution.
+usage for guidelines on appropriate styling and attribution.
 
 ### License
 

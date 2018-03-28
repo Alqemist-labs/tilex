@@ -3,7 +3,7 @@ defmodule Tilex.Repo.Migrations.AddEditorToDevelopers do
 
   def change do
     alter table(:developers) do
-      add :editor, :string, default: "Text Field"
+      add(:editor, :string, default: "Code Editor")
     end
   end
 end

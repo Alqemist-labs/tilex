@@ -5,6 +5,13 @@
 # is restricted to this project.
 use Mix.Config
 
+envar = fn name ->
+  case List.keyfind(Application.loaded_applications(), :distillery, 0) do
+    {_, _, _} -> "${#{name}}"
+    _ -> System.get_env(name)
+  end
+end
+
 # General application configuration
 config :tilex, ecto_repos: [Tilex.Repo]
 
@@ -21,12 +28,12 @@ config :tilex, :page_size, 5
 config :tilex, :auth_controller, AuthController
 config :tilex, :slack_notifier, Tilex.Notifications.Notifiers.Slack
 config :tilex, :twitter_notifier, Tilex.Notifications.Notifiers.Twitter
-config :tilex, :organization_name, System.get_env("ORGANIZATION_NAME")
-config :tilex, :canonical_domain, System.get_env("CANONICAL_DOMAIN")
-config :tilex, :default_twitter_handle, System.get_env("DEFAULT_TWITTER_HANDLE")
-config :tilex, :cors_origin, System.get_env("CORS_ORIGIN")
-config :tilex, :hosted_domain, System.get_env("HOSTED_DOMAIN")
-config :tilex, :guest_author_whitelist, System.get_env("GUEST_AUTHOR_WHITELIST")
+config :tilex, :organization_name, envar.("ORGANIZATION_NAME")
+config :tilex, :canonical_domain, envar.("CANONICAL_DOMAIN")
+config :tilex, :default_twitter_handle, envar.("DEFAULT_TWITTER_HANDLE")
+config :tilex, :cors_origin, envar.("CORS_ORIGIN")
+config :tilex, :hosted_domain, envar.("HOSTED_DOMAIN")
+config :tilex, :guest_author_whitelist, envar.("GUEST_AUTHOR_WHITELIST")
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -45,18 +52,15 @@ config :ueberauth, Ueberauth,
   ]
 
 config :ueberauth, Ueberauth.Strategy.Google.OAuth,
-  client_id: System.get_env("GOOGLE_CLIENT_ID"),
-  client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
+  client_id: envar.("GOOGLE_CLIENT_ID"),
+  client_secret: envar.("GOOGLE_CLIENT_SECRET")
 
 config :guardian, Guardian,
-  # optional
   allowed_algos: ["HS512"],
-  # optional
   verify_module: Guardian.JWT,
   issuer: "MyApp",
   ttl: {30, :days},
   allowed_drift: 2000,
-  # optional
   verify_issuer: true,
   secret_key: %{
     "k" => "_AbBL082GKlPjoY9o-KM78PhyALavJRtZXOW7D-ZyqE",

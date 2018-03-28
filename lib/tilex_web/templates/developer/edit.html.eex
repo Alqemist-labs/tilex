@@ -17,7 +17,14 @@
           <%= error_tag f, :twitter_handle %>
         </dt>
         <dd>
-          <%= text_input f, :twitter_handle, placeholder: "Enter name..." %>
+          <%= text_input f, :twitter_handle, placeholder: "Enter twitter_handle..." %>
+        </dd>
+        <dt>
+          <%= label f, :username %>
+          <%= error_tag f, :username %>
+        </dt>
+        <dd>
+          <%= text_input f, :username, placeholder: "Enter username..." %>
         </dd>
         <dt>
           <%= label f, :editor %>

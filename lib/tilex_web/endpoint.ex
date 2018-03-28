@@ -56,6 +56,6 @@ defmodule TilexWeb.Endpoint do
     signing_salt: "PSNTTaPr"
   )
 
-  use Appsignal.Phoenix
+  # use Appsignal.Phoenix
   plug(TilexWeb.Router)
 end

@@ -1,0 +1,28 @@
+<section id="post_edit">
+  <header class='page_head'>
+    <h1>Create Channel</h1>
+  </header>
+  <%= form_for @changeset, channel_path(@conn, :create), fn f -> %>
+  <dl>
+    <dt>
+      <%= label f, :name %>
+      <%= error_tag f, :name %>
+    </dt>
+    <dd>
+      <%= text_input f, :name, placeholder: "Enter name..." %>
+    </dd>
+  </dl>
+  <dl>
+    <dt>
+      <%= label f, :twitter_hashtag %>
+      <%= error_tag f, :twitter_hashtag %>
+    </dt>
+    <dd>
+      <%= text_input f, :twitter_hashtag, placeholder: "Enter twitter_hashtag..." %>
+    </dd>
+  </dl>
+
+    <%= submit "Submit" %>
+    <%= link("cancel", to: "/") %>
+  <% end %>
+</section>
