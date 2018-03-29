@@ -35,7 +35,10 @@ defmodule TilexWeb.AuthController do
   defp authenticate(%{info: %{email: email, name: name}}) when is_binary(name) do
     case authorized(email) do
       {:ok, email} ->
-        attrs = %{email: email}
+        attrs = %{
+          email: email,
+          username: Developer.format_username(name)
+        }
 
         Developer.find_or_create(Repo, attrs)
 
