@@ -15,8 +15,9 @@ config :logger, level: :warn
 config :tilex, Tilex.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "tilex_test",
-  hostname: "localhost",
+  hostname: "postgres",
   username: "postgres",
+  password: "postgres",
   pool: Ecto.Adapters.SQL.Sandbox,
   timeout: 30_000
 
